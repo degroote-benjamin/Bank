@@ -3,7 +3,7 @@ abstract class Account
 {
     protected $id_account ;
     protected $id_user ;
-    protected $amount ;
+    protected $amount=20;
     protected $type;
 
     const type = ["PEL","Livret A"];
@@ -63,14 +63,11 @@ abstract class Account
     /**
      * Set the value of Amount
      *
-     * @param int amount
      *
      */
-    public function setAmount($amount)
+    public static function setAmount()
     {
-        if ($amount>0) {
-            $this->amount = $amount;
-        }
+            $this->amount = static::$amount;
     }
 
     /**
