@@ -14,6 +14,15 @@ if (isset($_POST['submitsignup'])) {
     }
 }
 
+if (isset($_POST['submitlogin'])) {
+    $user = new User($_POST);
+    $user1 = $managerUser->get($user);
+    var_dump($user,$user1);
+    if (password_verify($_POST['password'], $user1->getPassword())) {
+      echo 'bonjour';
+    }
+}
+
 if (isset($_GET['signup'])) {
     include 'view/Signup.php';
 } else {

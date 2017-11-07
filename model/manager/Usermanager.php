@@ -14,7 +14,7 @@ class Usermanager
   }
 
   public function add($user){
-    $q = $this->db->prepare('INSERT INTO User set name=:name , mail=:mail, password=:password');
+    $q = $this->db->prepare('INSERT INTO User set name=:name , email=:mail, password=:password');
     $q->bindValue(':name',$user->getName());
     $q->bindValue(':mail',$user->getEmail());
     $q->bindValue(':password',$user->getPassword());
@@ -22,7 +22,10 @@ class Usermanager
   }
 
   public function get($user){
-
+    $q = $this->db->prepare('SELECT * from User where email = :email');
+    $q->bindValue(':email',$user->getEmail());
+    $q->execute();
+    return new User($q->fetch());
   }
 }
 
