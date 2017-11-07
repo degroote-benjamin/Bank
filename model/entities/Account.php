@@ -9,6 +9,28 @@ abstract class Account
     const type = ["PEL","Livret A"];
 
     /**
+ * @param array $donnees
+ */
+    public function __construct($donnees)
+    {
+        $this->hydrate($donnees);
+    }
+
+    /**
+     * @param  array  $donnees
+     */
+    public function hydrate($donnees)
+    {
+        foreach ($donnees as $key => $value) {
+            $method = 'set'.ucfirst($key);
+
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+    }
+
+    /**
      * Get the value of Id Account
      *
      * @return int
@@ -67,7 +89,7 @@ abstract class Account
      */
     public static function setAmount()
     {
-            $this->amount = static::$amount;
+        $this->amount = static::$amount;
     }
 
     /**
