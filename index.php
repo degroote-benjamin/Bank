@@ -1,7 +1,7 @@
 <?php
 function chargerClasse($classname)
 {
-  $entit = __DIR__. '/model/entity/' . $classname.'.php';
+  $entit = __DIR__. '/model/entities/' . $classname.'.php';
   $manager = __DIR__. '/model/manager/' . $classname.'.php';
   if(file_exists($entit)){
     require $entit;
@@ -13,4 +13,4 @@ function chargerClasse($classname)
 
 spl_autoload_register('chargerClasse');
 
-include 'control/index.php';
+include 'controller/index.php';
