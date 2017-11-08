@@ -15,7 +15,7 @@ if (isset($_POST['submitsignup'])) {
         $usercheckmail = $managerUser->get($user);
         // check if mail already exist in database
         if ($usercheckmail->getEmail() == null) {
-          unset($_SESSION['error']['mail']);
+            unset($_SESSION['error']['mail']);
             // password ==
             if ($_POST['password']==$_POST['passwordcheck']) {
                 $managerUser->add($user);
@@ -28,8 +28,8 @@ if (isset($_POST['submitsignup'])) {
         }
         // if mail already exist
         else {
-          $_SESSION['error']['mail']= true;
-          header('Location:?signup');
+            $_SESSION['error']['mail']= true;
+            header('Location:?signup');
         }
     } else {
         // if one post is empty or not exist
@@ -45,9 +45,21 @@ if (isset($_POST['submitlogin'])) {
     if (isset($_POST['email'],$_POST['password']) && !empty($_POST['email']) && !empty($_POST['password'])) {
         $user = new User($_POST);
         $user1 = $managerUser->get($user);
-        // if password is the same as database password
-        if (password_verify($_POST['password'], $user1->getPassword())) {
-            $_SESSION['user'] = $user1;
+        // if email not exist
+        if ($user1->getEmail() != null) {
+          unset($_SESSION['error']['maillog']);
+            // if password is the same as database password
+            if (password_verify($_POST['password'], $user1->getPassword())) {
+                $_SESSION['user'] = $user1;
+                unset($_SESSION['error']['passwordlog']);
+            }
+            // if wrong password
+            else {
+                $_SESSION['error']['passwordlog']=true;
+            }
+        }
+        else {
+          $_SESSION['error']['maillog']=true;
         }
     }
 }
