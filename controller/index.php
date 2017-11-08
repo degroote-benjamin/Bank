@@ -43,9 +43,15 @@ if (isset($_POST['submitlogin'])) {
 }
 
 
+if(isset($_GET['logout'])){
+  session_unset();
+  session_destroy();  
+}
+
+
 if(isset($_SESSION['user']))
 {
-
+include 'view/index.php';
 }
 else {
 if (isset($_GET['signup'])) {
