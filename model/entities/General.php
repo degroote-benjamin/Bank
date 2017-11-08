@@ -4,8 +4,14 @@
  */
 class General extends Account
 {
-private $type = "General";
+protected $type = "General";
 
+public function __construct()
+{
+    if (!empty($donnees)) {
+        $this->hydrate($donnees);
+    }
+}
 }
 
 

@@ -11,7 +11,9 @@ class User
     */
     public function __construct($donnees)
     {
-        $this->hydrate($donnees);
+        if (!empty($donnees)) {
+            $this->hydrate($donnees);
+        }
     }
 
     /**
@@ -120,12 +122,11 @@ class User
     public function setPassword($password)
     {
         $pass = password_get_info($password);
-        if($pass['algoName'] == 'unknown'){
-          $hash = password_hash($password, PASSWORD_DEFAULT);
-          $this->password = $hash;
+        if ($pass['algoName'] == 'unknown') {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $this->password = $hash;
+        } else {
+            $this->password = $password;
         }
-        else {
-        $this->password = $password;
-      }
     }
 }

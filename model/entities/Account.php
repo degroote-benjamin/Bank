@@ -13,7 +13,9 @@ abstract class Account
  */
     public function __construct($donnees)
     {
-        $this->hydrate($donnees);
+        if (!empty($donnees)) {
+            $this->hydrate($donnees);
+        }
     }
 
     /**

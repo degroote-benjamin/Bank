@@ -2,7 +2,7 @@
 include "model/connect.php";
 // connect db
 $managerUser = new Usermanager($db);
-
+$managerA = new Accountmanager($db);
 // if click on button submit form sign up
 if (isset($_POST['submitsignup'])) {
     // all post exist and not empty
@@ -19,6 +19,8 @@ if (isset($_POST['submitsignup'])) {
             // password ==
             if ($_POST['password']==$_POST['passwordcheck']) {
                 $managerUser->add($user);
+                $general = new General();
+                $managerA->insertGeneral($general);
                 unset($_SESSION['error']['password']);
             } else {
                 // if password are not identic
@@ -47,7 +49,7 @@ if (isset($_POST['submitlogin'])) {
         $user1 = $managerUser->get($user);
         // if email not exist
         if ($user1->getEmail() != null) {
-          unset($_SESSION['error']['maillog']);
+            unset($_SESSION['error']['maillog']);
             // if password is the same as database password
             if (password_verify($_POST['password'], $user1->getPassword())) {
                 $_SESSION['user'] = $user1;
@@ -57,9 +59,8 @@ if (isset($_POST['submitlogin'])) {
             else {
                 $_SESSION['error']['passwordlog']=true;
             }
-        }
-        else {
-          $_SESSION['error']['maillog']=true;
+        } else {
+            $_SESSION['error']['maillog']=true;
         }
     }
 }
