@@ -26,6 +26,7 @@ class Usermanager
         $q = $this->db->prepare('SELECT * from User where email = :email');
         $q->bindValue(':email', $user->getEmail());
         $q->execute();
-        return new User($q->fetch());
+        $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User', array(array("id_user",'name',"password","email")));
+        return $q->fetch();
     }
 }

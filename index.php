@@ -11,8 +11,8 @@ function chargerClasse($classname)
   }
 }
 
-session_start();
-
 spl_autoload_register('chargerClasse');
+
+session_start();
 
 include 'controller/index.php';

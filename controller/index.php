@@ -3,6 +3,7 @@ include "model/connect.php";
 // connect db
 $managerUser = new Usermanager($db);
 $managerA = new Accountmanager($db);
+
 // if click on button submit form sign up
 if (isset($_POST['submitsignup'])) {
     // all post exist and not empty
@@ -11,10 +12,11 @@ if (isset($_POST['submitsignup'])) {
         foreach ($_POST as $key => $value) {
             $data[$key] = strip_tags($value);
         }
+        $data['password'] =password_hash($data['password'], PASSWORD_DEFAULT);
         $user = new User($data);
         $usercheckmail = $managerUser->get($user);
         // check if mail already exist in database
-        if ($usercheckmail->getEmail() == null) {
+        if ($usercheckmail == false) {
             unset($_SESSION['error']['mail']);
             // password ==
             if ($_POST['password']==$_POST['passwordcheck']) {
@@ -73,6 +75,7 @@ if (isset($_GET['logout'])) {
 
 
 if (isset($_SESSION['user'])) {
+    $list = $managerA->getList($_SESSION['user']);
     include 'view/index.php';
 } else {
     if (isset($_GET['signup'])) {

@@ -121,12 +121,6 @@ class User
     */
     public function setPassword($password)
     {
-        $pass = password_get_info($password);
-        if ($pass['algoName'] == 'unknown') {
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            $this->password = $hash;
-        } else {
             $this->password = $password;
-        }
     }
 }
