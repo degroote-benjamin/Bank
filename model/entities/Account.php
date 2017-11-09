@@ -6,7 +6,7 @@ abstract class Account
     protected $amount=20;
     protected $type;
 
-    const type = ["PEL","Livret A"];
+    const Type = ["Pel","LivretA"];
 
     /**
  * @param array $donnees
@@ -112,7 +112,7 @@ abstract class Account
      */
     public function setType($type)
     {
-        if (in_array($type, self::type)) {
+        if (in_array($type, self::Type)) {
             $this->type = $type;
         }
     }

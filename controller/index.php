@@ -67,6 +67,23 @@ if (isset($_POST['submitlogin'])) {
     }
 }
 
+// if click on add on add_account page
+if(isset($_POST['submitadd'])){
+  if(isset($_POST['type'])){
+    foreach ($_POST as $key => $value) {
+        $data[$key] = strip_tags($value);
+    }
+    $data['id_user']= $_SESSION['user']->getIdUser();
+    $account = new $_POST['type']($data);
+    $managerA->add($account);
+  }
+}
+
+
+if(isset($_GET['iddelete'])){
+
+}
+
 
 if (isset($_GET['logout'])) {
     session_unset();

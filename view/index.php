@@ -1,8 +1,12 @@
 <?php
 include 'header.php';
-foreach ($list as $key => $value) {
 ?>
 <div class="container">
+  <div class="row">
+<?php
+foreach ($list as $key => $value) {
+?>
+
 <ul class="list-group col-5">
   <li class="list-group-item active d-flex justify-content-center"><?php echo $value->getType() ?></li>
   <li class="list-group-item">Amount : <?php echo $value->getAmount()?></li>
@@ -11,11 +15,11 @@ foreach ($list as $key => $value) {
     <a class="btn btn-primary" href="detail.php?iddetail=<?php echo $value->getIdAccount();?>"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
   </li>
 </ul>
-</div>
 <?php
 }
 ?>
-
+</div>
+</div>
 
 <?php
 include 'footer.php';

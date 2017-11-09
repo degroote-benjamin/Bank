@@ -42,7 +42,7 @@
     <a class="nav-link" href="index.php">Index</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="index.php">Add account</a>
+    <a class="nav-link" href="add.php">Add account</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="index.php">Transfert</a>

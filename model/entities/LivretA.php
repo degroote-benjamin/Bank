@@ -4,13 +4,13 @@
  */
 class LivretA extends Account
 {
-  private $taux;
+  private $taux=0.75;
 
   /**
    * [setTaux description]
    */
   public static function setTaux(){
-    $this->taux = 0.75;
+    $this->taux = SELF::$taux;
   }
 
   /**
