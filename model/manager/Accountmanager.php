@@ -16,6 +16,14 @@ class Accountmanager
       $this->db = $db;
   }
 
+  public function get($id){
+    $q = $this->db->prepare('SELECT type,id_account,id_user,amount FROM Account where id_account = :id');
+    $q->bindValue(':id',$id);
+    $q->execute();
+    $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'General',array(array('type','id_account','id_user','amount')));
+    return $q->fetch();
+  }
+
   public function insertGeneral($account){
     $q = $this->db->prepare('INSERT INTO Account set id_user = :id_user , amount=:amount , type=:type');
     $q->bindValue(':id_user',$this->db->lastInsertId());
@@ -39,7 +47,7 @@ class Accountmanager
     $q->bindValue(':id',$account->getIdUser());
 
     if($account->getType() == "Pel"){
-      $q->bindValue(':date',NOW());
+      $q->bindValue(':date',date("Y-m-d"));
     }
     else {
       $q->bindValue(':date',NULL);
@@ -52,6 +60,19 @@ class Accountmanager
       $q->bindValue(':taux',NULL);
     }
 
+    $q->execute();
+  }
+
+  public function delete($id){
+    $q = $this->db->prepare('DELETE FROM Account where id_account = :id');
+    $q->bindValue(':id',$id->getIdAccount());
+    $q->execute();
+  }
+
+  public function update($account){
+    $q=$this->db->prepare('UPDATE Account set amount = :amount where id_account = :id');
+    $q->bindValue(':amount',$account->getAmount());
+    $q->bindValue(':id',$account->getIdAccount());
     $q->execute();
   }
 }

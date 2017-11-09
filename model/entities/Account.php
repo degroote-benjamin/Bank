@@ -116,4 +116,20 @@ abstract class Account
             $this->type = $type;
         }
     }
+
+    /**
+     * Set amount with banking operation
+     * @param  int $amount
+     */
+    public function withdrawal($a){
+      $this->amount -= $a;
+    }
+
+    /**
+     * Set amount with banking operation
+     * @param  int $amount
+     */
+    public function add($a){
+      $this->amount += $a;
+    }
 }

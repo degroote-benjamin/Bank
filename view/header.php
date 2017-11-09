@@ -45,7 +45,7 @@
     <a class="nav-link" href="add.php">Add account</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="index.php">Transfert</a>
+    <a class="nav-link" href="add.php?transfer">Transfert</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="index.php?logout">Log out</a>

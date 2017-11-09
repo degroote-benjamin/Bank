@@ -80,8 +80,9 @@ if(isset($_POST['submitadd'])){
 }
 
 
-if(isset($_GET['iddelete'])){
-
+if(isset($_GET['id_account'])){
+ $account = $managerA->get($_GET['id_account']);
+ $managerA->delete($account);
 }
 
 
