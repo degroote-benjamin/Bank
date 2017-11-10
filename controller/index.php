@@ -68,21 +68,30 @@ if (isset($_POST['submitlogin'])) {
 }
 
 // if click on add on add_account page
-if(isset($_POST['submitadd'])){
-  if(isset($_POST['type'])){
-    foreach ($_POST as $key => $value) {
-        $data[$key] = strip_tags($value);
+if (isset($_POST['submitadd'])) {
+    if (isset($_POST['type'])) {
+        foreach ($_POST as $key => $value) {
+            $data[$key] = strip_tags($value);
+        }
+        $data['id_user']= $_SESSION['user']->getIdUser();
+        $account = new $_POST['type']($data);
+        $managerA->add($account);
     }
-    $data['id_user']= $_SESSION['user']->getIdUser();
-    $account = new $_POST['type']($data);
-    $managerA->add($account);
-  }
 }
 
 
-if(isset($_GET['id_account'])){
- $account = $managerA->get($_GET['id_account']);
- $managerA->delete($account);
+if (isset($_GET['id_account'])) {
+    $account = $managerA->get($_GET['id_account']);
+    if($account->getAmount()>0 && $account->getType()!="General"){
+      $general =$managerA->getAccountUser($_SESSION['user']);
+      $general->add($account->getAmount());
+      $managerA->update($general);
+    }
+    if ($account->getType()=="General") {
+        $_SESSION['error']['delete']=true;
+    } else {
+        $managerA->delete($account);
+    }
 }
 
 
@@ -102,3 +111,5 @@ if (isset($_SESSION['user'])) {
         include 'view/connection.php';
     }
 }
+
+unset($_SESSION['error']['delete']);

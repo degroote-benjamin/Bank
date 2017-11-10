@@ -1,6 +1,14 @@
 <?php
 include 'header.php';
 ?>
+<?php
+if(isset($_SESSION['error']['delete'])){
+  ?>
+  <div class="alert alert-danger" role="alert">
+    <strong class="text-center">You can't delete general account</strong>
+  </div>
+  <?php
+} ?>
 <div class="container">
   <div class="row">
 <?php

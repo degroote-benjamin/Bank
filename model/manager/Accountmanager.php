@@ -75,6 +75,14 @@ class Accountmanager
     $q->bindValue(':id',$account->getIdAccount());
     $q->execute();
   }
+
+  public function getAccountUser($account){
+    $q = $this->db->prepare('SELECT type,id_account,id_user,amount FROM Account where id_user = :id and type="General"');
+    $q->bindValue(':id',$account->getIdUser());
+    $q->execute();
+    $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'General',array(array('type','id_account','id_user','amount')));
+    return $q->fetch();
+  }
 }
 
  ?>
