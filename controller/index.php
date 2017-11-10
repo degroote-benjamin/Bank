@@ -82,7 +82,7 @@ if (isset($_POST['submitadd'])) {
 
 if (isset($_GET['id_account'])) {
     $account = $managerA->get($_GET['id_account']);
-    if($account->getAmount()>0 && $account->getType()!="General"){
+    if($account->getAmount()!=0 && $account->getType()!="General"){
       $general =$managerA->getAccountUser($_SESSION['user']);
       $general->add($account->getAmount());
       $managerA->update($general);

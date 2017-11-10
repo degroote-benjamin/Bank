@@ -6,14 +6,20 @@ $managerA = new Accountmanager($db);
 
 // if click on submitamount from detail.php
 if (isset($_POST['submitamount'])) {
-    if (isset($_POST['amount'],$_POST['bank'])) {
+  unset($_SESSION['error']['amount']);
+    if (isset($_POST['amount'],$_POST['bank']) && !empty($_POST['amount'])) {
         $account = $managerA->get($_POST['iddetail']);
-        if ($_POST['bank'] == "withdrawal") {
-            $account->withdrawal($_POST['amount']);
+        // if amount  negative , can't add or withdrawal
+        if ($_POST['amount']<=0) {
+          $_SESSION['error']['amount'] = true;
         } else {
-            $account->add($_POST['amount']);
+            if ($_POST['bank'] == "withdrawal") {
+                $account->withdrawal($_POST['amount']);
+            } else {
+                $account->add($_POST['amount']);
+            }
+            $managerA->update($account);
         }
-        $managerA->update($account);
     }
 }
 
@@ -45,6 +51,4 @@ if (isset($_GET['iddetail']) || isset($_POST['iddetail'])) {
 } elseif (isset($_GET['transfer'])) {
     $list=$managerA->getList($_SESSION['user']);
     include 'view/transfer.php';
-} else {
-    include 'view/add_account.php';
 }

@@ -10,12 +10,12 @@ if(isset($_SESSION['error']['delete'])){
   <?php
 } ?>
 <div class="container">
-  <div class="row">
+  <div class="row d-flex justify-content-center">
 <?php
 foreach ($list as $key => $value) {
 ?>
 
-<ul class="list-group col-5">
+<ul class="list-group col-10 col-md-5 my-3">
   <li class="list-group-item active d-flex justify-content-center"><?php echo $value->getType() ?></li>
   <li class="list-group-item">Amount : <?php echo $value->getAmount()?></li>
   <li class="list-group-item d-flex justify-content-around">

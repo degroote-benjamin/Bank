@@ -19,6 +19,14 @@ include 'header.php';
   <div class="row">
 <form action="add.php" method="post" class="my-5">
 <div class="form-group">
+  <?php
+  if(isset($_SESSION['error']['amount'])){
+    ?>
+    <div class="alert alert-danger" role="alert">
+      <strong class="text-center">wrong amount</strong>
+    </div>
+    <?php
+  } ?>
   <label for="bank">Banking operation</label>
   <select name="bank" class="form-control">
     <option value="withdrawal">Withdrawal</option>
@@ -27,7 +35,7 @@ include 'header.php';
 </div>
 <div class="form-group">
   <label for="amount">Amount</label>
-  <input class="form-control" type="text" name="amount" value="" id="amount">
+  <input class="form-control" type="number" name="amount" value="" id="amount">
 </div>
 <input type="hidden" name="iddetail" value="<?php echo $account->getIdAccount()?>">
 <input type="submit" name="submitamount" value="Submit" class="btn btn-primary">
