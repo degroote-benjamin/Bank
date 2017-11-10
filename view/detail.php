@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 ?>
-<div class="container d-flex justify-content-end">
+<div class="container d-flex justify-content-end my-3">
 <a class="btn btn-primary" href="index.php?id_account=<?php echo $account->getIdAccount();?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
 </div>
 <div class="container d-flex justify-content-center">

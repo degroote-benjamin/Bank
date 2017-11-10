@@ -5,6 +5,14 @@ include 'header.php';
    <div class="row">
  <form action="add.php?transfer" method="post" class="my-5">
  <div class="form-group">
+   <?php
+  if(isset($_SESSION['error']['amount'])){
+    ?>
+    <div class="alert alert-danger" role="alert">
+      <strong>Wrong amount</strong>
+    </div>
+    <?php
+  } ?>
    <label for="bank">debit</label>
    <select name="debit" class="form-control">
      <?php foreach ($list as $key => $value){ ?>
@@ -22,7 +30,7 @@ include 'header.php';
 </div>
  <div class="form-group">
    <label for="amount">Amount</label>
-   <input class="form-control" type="text" name="amount" value="" id="amount">
+   <input class="form-control" type="number" name="amount" value="" id="amount">
  </div>
  <input type="submit" name="submittransfer" value="Submit" class="btn btn-primary">
  </form>

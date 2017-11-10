@@ -50,7 +50,7 @@ if (isset($_POST['submitlogin'])) {
         $user = new User($_POST);
         $user1 = $managerUser->get($user);
         // if email not exist
-        if ($user1->getEmail() != null) {
+        if ($user1== true) {
             unset($_SESSION['error']['maillog']);
             // if password is the same as database password
             if (password_verify($_POST['password'], $user1->getPassword())) {
@@ -80,6 +80,7 @@ if (isset($_POST['submitadd'])) {
 }
 
 
+// if delete , see if the account have more than 0 and if it's a general account
 if (isset($_GET['id_account'])) {
     $account = $managerA->get($_GET['id_account']);
     if($account->getAmount()!=0 && $account->getType()!="General"){
@@ -87,6 +88,7 @@ if (isset($_GET['id_account'])) {
       $general->add($account->getAmount());
       $managerA->update($general);
     }
+    // can't delete general account
     if ($account->getType()=="General") {
         $_SESSION['error']['delete']=true;
     } else {
@@ -95,12 +97,13 @@ if (isset($_GET['id_account'])) {
 }
 
 
+// if user click on log out in navbar
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
 }
 
-
+// if user is connect
 if (isset($_SESSION['user'])) {
     $list = $managerA->getList($_SESSION['user']);
     include 'view/index.php';
@@ -111,5 +114,3 @@ if (isset($_SESSION['user'])) {
         include 'view/connection.php';
     }
 }
-
-unset($_SESSION['error']['delete']);
