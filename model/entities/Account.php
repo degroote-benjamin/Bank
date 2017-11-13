@@ -3,7 +3,7 @@ abstract class Account
 {
     protected $id_account ;
     protected $id_user ;
-    protected static $amount=20;
+    protected $amount=20;
     protected $type;
 
     const Type = ["Pel","LivretA"];

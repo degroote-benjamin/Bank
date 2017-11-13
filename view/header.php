@@ -30,58 +30,58 @@
         <![endif]-->
 
 
-<header class="jumbotron">
-  <h1 class="text-center">Bank</h1>
-  <?php
-  if (isset($_SESSION['user'])) {
-      ?>
-  <nav class="">
-    <ul class="nav justify-content-end flex-column flex-md-row">
-  <li class="nav-item">
-    <a class="nav-link" href="index.php">Index</a>
-  </li>
-  <li class="nav-item">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add account</button>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="add.php?transfer">Transfert</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="index.php?logout">Log out</a>
-  </li>
-</ul>
-  </nav>
+    <header class="jumbotron">
+        <h1 class="text-center">Bank</h1>
+        <?php
+          if (isset($_SESSION['user'])) {
+          ?>
+            <nav class="">
+                <ul class="nav justify-content-end flex-column flex-md-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Index</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add account</button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="add.php?transfer">Transfert</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?logout">Log out</a>
+                    </li>
+                </ul>
+            </nav>
 
-  <?php
-  }
-   ?>
-</header>
-
-
+            <?php
+              }
+            ?>
+    </header>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="container d-flex justify-content-center my-5">
-          <div class="row">
-              <form class="" action="index.php" method="post">
-                  <div class="form-group">
-                      <label for="type">Select type account:</label>
-                      <select class="form-control" name="type" id="type">
-                        <?php
-                        foreach (Account::Type as $key => $value) {
-                            ?>
-                          <option value="<?php echo $value?>"><?php echo $value?></option>
-                        <?php
-                        }
-                        ?>
-                      </select>
-                  </div>
-                  <input type="submit" name="submitadd" value="Submit" class="btn btn-primary">
-              </form>
-          </div>
-      </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="container d-flex justify-content-center my-5">
+                    <div class="row">
+                        <form class="" action="index.php" method="post">
+                            <div class="form-group">
+                                <label for="type">Select type account:</label>
+                                <select class="form-control" name="type" id="type">
+                                    <?php
+                                    foreach (Account::Type as $key => $value) {
+                                        ?>
+                                      <option value="<?php echo $value?>"><?php echo $value?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <input type="submit" name="submitadd" value="Submit" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
