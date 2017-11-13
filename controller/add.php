@@ -14,7 +14,13 @@ if (isset($_POST['submitamount'])) {
             $_SESSION['error']['amount'] = true;
         } else {
             if ($_POST['bank'] == "withdrawal") {
+              if($account->getType() != "Pel"){
                 $account->withdrawal($_POST['amount']);
+              }
+              else {
+                header('Location:index.php?id_account='.$account->getIdAccount());
+                exit;
+              }
             } else {
                 $account->add($_POST['amount']);
             }

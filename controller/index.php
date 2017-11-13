@@ -28,17 +28,20 @@ if (isset($_POST['submitsignup'])) {
                 // if password are not identic
                 $_SESSION['error']['password'] = true;
                 header('Location:?signup');
+                exit;
             }
         }
         // if mail already exist
         else {
             $_SESSION['error']['mail']= true;
             header('Location:?signup');
+            exit;
         }
     } else {
         // if one post is empty or not exist
         $_SESSION['error']['emptysignup'] = true;
         header('Location:?signup');
+        exit;
     }
 }
 
@@ -115,3 +118,5 @@ if (isset($_SESSION['user'])) {
         include 'view/connection.php';
     }
 }
+
+unset($_SESSION['error']);
