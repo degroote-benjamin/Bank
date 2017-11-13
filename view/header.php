@@ -30,12 +30,12 @@
         <![endif]-->
 
 
-    <header class="jumbotron">
+    <header class="jumbotron mb-5">
         <h1 class="text-center">Bank</h1>
+        <nav class="">
         <?php
           if (isset($_SESSION['user'])) {
           ?>
-            <nav class="">
                 <ul class="nav justify-content-end flex-column flex-md-row">
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">Index</a>
@@ -55,6 +55,7 @@
             <?php
               }
             ?>
+          </nav>
     </header>
 
 
