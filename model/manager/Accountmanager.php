@@ -17,7 +17,7 @@ class Accountmanager
   }
 
   public function get($id){
-    $q = $this->db->prepare('SELECT type,id_account,id_user,amount,type FROM Account where id_account = :id');
+    $q = $this->db->prepare('SELECT type,id_account,id_user,amount,type,date FROM Account where id_account = :id');
     $q->bindValue(':id',$id);
     $q->execute();
     // $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'General',array(array('type','id_account','id_user','amount')));

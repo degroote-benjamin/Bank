@@ -4,7 +4,7 @@
  */
 class LivretA extends Account
 {
-  private static $taux=0.75;
+  private static $taux=0.075;
 
   /**
    * [setTaux description]
