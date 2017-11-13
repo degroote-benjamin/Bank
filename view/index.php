@@ -9,6 +9,14 @@ include 'header.php';
         </div>
         <?php
         } ?>
+        <?php
+        if (isset($_SESSION['error']['pel'])) {
+            ?>
+        <div class="alert alert-danger" role="alert">
+            <strong class="text-center">You delete your PEL because you withdrawal money from him</strong>
+        </div>
+        <?php
+        } ?>
             <div class="container">
                 <div class="row d-flex justify-content-center">
                   <?php

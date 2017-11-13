@@ -17,7 +17,7 @@ include 'header.php';
                             <select name="debit" class="form-control">
                              <?php foreach ($list as $key => $value) {
                           ?>
-                               <option value="<?php echo $value->getIdAccount()?>"><?php echo $value->getType() . "   " . $value->getAmount()?></option>
+                               <option value="<?php echo $value->getIdAccount()?>"><?php echo $value->getType() . "   " . $value->getAmount()?>$</option>
                              <?php
                       } ?>
                            </select>
@@ -27,7 +27,7 @@ include 'header.php';
                     <select name="credit" class="form-control">
                        <?php foreach ($list as $key => $value) {
                           ?>
-                         <option value="<?php echo $value->getIdAccount()?>"><?php echo $value->getType() . "   " . $value->getAmount()?></option>
+                         <option value="<?php echo $value->getIdAccount()?>"><?php echo $value->getType() . "   " . $value->getAmount()?>$</option>
                        <?php
                       } ?>
                    </select>

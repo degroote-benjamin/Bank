@@ -18,6 +18,7 @@ if (isset($_POST['submitamount'])) {
                 $account->withdrawal($_POST['amount']);
               }
               else {
+                $_SESSION['error']['pel']=true;
                 header('Location:index.php?id_account='.$account->getIdAccount());
                 exit;
               }
@@ -63,6 +64,9 @@ if (isset($_GET['iddetail']) || isset($_POST['iddetail'])) {
 } elseif (isset($_GET['transfer'])) {
     $list=$managerA->getList($_SESSION['user']);
     include 'view/transfer.php';
+}
+else {
+  header('Location:index.php');
 }
 
 
