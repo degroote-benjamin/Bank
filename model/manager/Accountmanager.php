@@ -17,10 +17,11 @@ class Accountmanager
   }
 
   public function get($id){
-    $q = $this->db->prepare('SELECT type,id_account,id_user,amount FROM Account where id_account = :id');
+    $q = $this->db->prepare('SELECT type,id_account,id_user,amount,type FROM Account where id_account = :id');
     $q->bindValue(':id',$id);
     $q->execute();
-    $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'General',array(array('type','id_account','id_user','amount')));
+    // $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'General',array(array('type','id_account','id_user','amount')));
+    $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_CLASSTYPE);
     return $q->fetch();
   }
 
@@ -33,10 +34,11 @@ class Accountmanager
   }
 
   public function getList($id){
-    $q = $this->db->prepare('SELECT type,id_account,id_user,amount FROM Account where id_user = :id');
+    $q = $this->db->prepare('SELECT type,id_account,id_user,amount,type FROM Account where id_user = :id');
     $q->bindValue(':id',$id->getIdUser());
     $q->execute();
-    $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'General',array(array('type','id_account','id_user','amount')));
+    // $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'General',array(array('type','id_account','id_user','amount')));
+    $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_CLASSTYPE);
     return $q->fetchAll();
   }
 
@@ -77,10 +79,11 @@ class Accountmanager
   }
 
   public function getAccountUser($account){
-    $q = $this->db->prepare('SELECT type,id_account,id_user,amount FROM Account where id_user = :id and type="General"');
+    $q = $this->db->prepare('SELECT type,id_account,id_user,amount,type FROM Account where id_user = :id and type="General"');
     $q->bindValue(':id',$account->getIdUser());
     $q->execute();
-    $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'General',array(array('type','id_account','id_user','amount')));
+    // $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'General',array(array('type','id_account','id_user','amount')));
+    $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_CLASSTYPE);
     return $q->fetch();
   }
 }

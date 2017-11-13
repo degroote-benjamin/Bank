@@ -3,7 +3,7 @@ abstract class Account
 {
     protected $id_account ;
     protected $id_user ;
-    protected $amount=20;
+    protected static $amount=20;
     protected $type;
 
     const Type = ["Pel","LivretA"];
@@ -11,7 +11,7 @@ abstract class Account
     /**
  * @param array $donnees
  */
-    public function __construct($donnees)
+    public function __construct($donnees=NULL)
     {
         if (!empty($donnees)) {
             $this->hydrate($donnees);
