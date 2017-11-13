@@ -4,7 +4,7 @@ include "model/connect.php";
 $managerUser = new Usermanager($db);
 $managerA = new Accountmanager($db);
 
-// if click on submitamount from detail.php
+// if click on submitamount from detail.php , get account if id account and add or withdrawal account and update in database
 if (isset($_POST['submitamount'])) {
     unset($_SESSION['error']['amount']);
     if (isset($_POST['amount'],$_POST['bank']) && !empty($_POST['amount'])) {
@@ -44,7 +44,7 @@ if (isset($_POST['submittransfer'])) {
     }
 }
 
-// if id detail exist
+// if id detail exist , get account detail wtih account id , get account list with id user if transfer $_GET
 if (isset($_GET['iddetail']) || isset($_POST['iddetail'])) {
     // create universal $id
     if (isset($_GET['iddetail'])) {

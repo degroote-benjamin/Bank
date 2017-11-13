@@ -81,6 +81,7 @@ if (isset($_POST['submitadd'])) {
 
 
 // if delete , see if the account have more than 0 and if it's a general account
+// get account for this user , add the amount of delete account in general account
 if (isset($_GET['id_account'])) {
     $account = $managerA->get($_GET['id_account']);
     if($account->getAmount()!=0 && $account->getType()!="General"){

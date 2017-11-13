@@ -7,7 +7,7 @@ include 'header.php';
                 <div class="form-group">
                      <?php
                       if (isset($_SESSION['error']['amount'])) {
-                          ?>
+                      ?>
                         <div class="alert alert-danger" role="alert">
                             <strong>Wrong amount</strong>
                         </div>
