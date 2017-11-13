@@ -17,7 +17,7 @@ if (isset($_POST['submitamount'])) {
               if($account->getType() != "Pel"){
                 $account->withdrawal($_POST['amount']);
               }
-              else {
+              else if($account->diff() < 600){
                 $_SESSION['error']['pel']=true;
                 header('Location:index.php?id_account='.$account->getIdAccount());
                 exit;

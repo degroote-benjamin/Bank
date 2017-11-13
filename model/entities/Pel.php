@@ -22,8 +22,8 @@ class Pel extends Account
     $this->date = $date;
   }
 
-  public function diff($date){
-    $datetime1 = new DateTime($date->getDate());
+  public function diff(){
+    $datetime1 = new DateTime($this->getDate());
     $datetime2 = new DateTime(date("Y-m-d"));
     $interval = $datetime1->diff($datetime2);
     return $interval->format('%a');
