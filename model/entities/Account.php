@@ -6,14 +6,16 @@ abstract class Account
     protected $amount=20;
     protected $type;
 
-    const type = ["PEL","Livret A"];
+    const Type = ["Pel","LivretA"];
 
     /**
  * @param array $donnees
  */
-    public function __construct($donnees)
+    public function __construct($donnees=NULL)
     {
-        $this->hydrate($donnees);
+        if (!empty($donnees)) {
+            $this->hydrate($donnees);
+        }
     }
 
     /**
@@ -110,8 +112,24 @@ abstract class Account
      */
     public function setType($type)
     {
-        if (in_array($type, self::type)) {
+        if (in_array($type, self::Type)) {
             $this->type = $type;
         }
+    }
+
+    /**
+     * Set amount with banking operation
+     * @param  int $amount
+     */
+    public function withdrawal($a){
+      $this->amount -= $a;
+    }
+
+    /**
+     * Set amount with banking operation
+     * @param  int $amount
+     */
+    public function add($a){
+      $this->amount += $a;
     }
 }

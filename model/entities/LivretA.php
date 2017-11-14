@@ -4,21 +4,15 @@
  */
 class LivretA extends Account
 {
-  private $taux;
+  private static $taux=0.075;
 
-  /**
-   * [setTaux description]
-   */
-  public static function setTaux(){
-    $this->taux = 0.75;
-  }
 
   /**
    *  return the value taux
    * @return int taux
    */
-  public function getTaux(){
-    return $this->taux;
+  public static function getTaux(){
+    return self::$taux;
   }
 }
 

@@ -1,5 +1,5 @@
-<footer class="jumbotron">
-  <h2>@copyright Bank</h2>
+<footer>
+    <h2>@copyright Bank</h2>
 </footer>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

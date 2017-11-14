@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    <link rel="stylesheet" typePreview post="text/css" href="demos.css">
 </head>
 
 <body>
@@ -30,15 +29,60 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-<header class="jumbotron">
-  <nav>
-    <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link active" href="index.php">Index</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="add.php">add vehicle</a>
-  </li>
-</ul>
-  </nav>
-</header>
+
+    <header class="jumbotron mb-5">
+        <h1 class="text-center">Bank</h1>
+        <nav class="">
+        <?php
+          if (isset($_SESSION['user'])) {
+          ?>
+                <ul class="nav justify-content-end flex-column flex-md-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Index</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add account</button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="add.php?transfer">Transfert</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?logout">Log out</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <?php
+              }
+            ?>
+          </nav>
+    </header>
+
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="container d-flex justify-content-center my-5">
+                    <div class="row">
+                        <form class="" action="index.php" method="post">
+                            <div class="form-group">
+                                <label for="type">Select type account:</label>
+                                <select class="form-control" name="type" id="type">
+                                    <?php
+                                    foreach (Account::Type as $key => $value) {
+                                        ?>
+                                      <option value="<?php echo $value?>"><?php echo $value?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <input type="submit" name="submitadd" value="Submit" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
