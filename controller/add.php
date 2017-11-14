@@ -10,7 +10,7 @@ if (isset($_POST['submitamount'])) {
     if (isset($_POST['amount'],$_POST['bank']) && !empty($_POST['amount'])) {
         $account = $managerA->get($_POST['iddetail']);
         // if amount  negative , can't add or withdrawal
-        if ($_POST['amount']<=0) {
+        if ($_POST['amount']<=0 || $_POST['amount']>999999999) {
             $_SESSION['error']['amount'] = true;
         } else {
             if ($_POST['bank'] == "withdrawal") {
@@ -33,7 +33,7 @@ if (isset($_POST['submitamount'])) {
 // if click on submit transfer , isset all post , and do credit / debit account
 if (isset($_POST['submittransfer'])) {
     if (isset($_POST['credit'],$_POST['debit'],$_POST['amount'])) {
-        if (empty($_POST['amount']) || $_POST['amount']<0) {
+        if (empty($_POST['amount']) || $_POST['amount']<0 || $_POST['amount']>999999999) {
             $_SESSION['error']['amount'] = true;
         } else {
             unset($_SESSION['error']['amount']);
