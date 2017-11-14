@@ -30,7 +30,7 @@ include 'header.php';
                 </div>
                 <input type="submit" name="submitlogin" value="Submit" class="btn btn-primary">
             </form>
-            <a href="?signup" class="col-12">SignUp</a>
+            <a href="?signup" class="col-12 my-3">SignUp</a>
         </div>
     </div>
 

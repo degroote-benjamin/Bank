@@ -47,7 +47,7 @@ include 'header.php';
                         </div>
                         <input type="submit" name="submitsignup" value="Submit" class="btn btn-primary">
             </form>
-            <a href="." class="col-12">login</a>
+            <a href="." class="col-12 my-3">login</a>
         </div>
     </div>
 

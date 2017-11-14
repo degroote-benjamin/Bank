@@ -1,4 +1,4 @@
-<footer class="jumbotron">
+<footer>
     <h2>@copyright Bank</h2>
 </footer>
 

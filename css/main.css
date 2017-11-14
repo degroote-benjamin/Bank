@@ -99,9 +99,6 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-   /**
-    * Demo Styles
-    */
 
    html {
      height: 100%;
@@ -132,12 +129,9 @@ textarea {
      right: 0;
      bottom: 0;
      left: 0;
+     background-color: #ECEEEF;
+     padding-bottom: 20px;
    }
-
-   .jumbotron{
-     margin-bottom: 0;
-   }
-
 
 /* ==========================================================================
    Helper classes
